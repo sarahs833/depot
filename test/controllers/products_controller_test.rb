@@ -9,10 +9,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
-    assert_select 'nav.side_ nav a' , minimum: 4
-    assert_select 'main ul.catalog li' , 3
-    assert_select 'h2' , 'Programming Ruby 1.9'
-    assert_select '.price' , /\$[,\d]+\.\d\d/
 
   end
 
@@ -49,6 +45,20 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       delete product_url(@product)
     end
 
+    assert_redirected_to products_url
+  end
+
+  test "can't delete product in cart" do
+    assert_difference( 'Product.count' , 0) do
+    delete product_url(products(:two))
+  end
+
+  assert_redirected_to products_url
+  end
+  test "should de stroy prod uct" do
+    assert_difference( 'Product.count' , -1) do
+    delete product_url(@product)
+  end
     assert_redirected_to products_url
   end
 end
