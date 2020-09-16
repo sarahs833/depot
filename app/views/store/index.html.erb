@@ -1,6 +1,6 @@
 
 <% if notice %>
-  <aside id= "notice" > < %= notice %></aside>
+  <aside id= "notice" > <%= notice %></aside>
 <% end %>
 
 <h1><%=pluralize(session[:counter],'session') unless session[:counter] < 5%></h1>
