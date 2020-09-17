@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart , only: [ :create]
+  before_action :set_cart , only: [ :create, :destroy]
   before_action :reset_counter, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -29,10 +29,9 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id ])
     @line_item = @cart.add_product(product)
-
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @cart }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -58,9 +57,9 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    @line_item.check_quantity
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to @cart, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +72,6 @@ class LineItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id)
     end
 end

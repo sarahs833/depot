@@ -16,11 +16,14 @@
     </header>
    <section class="content" >
    <nav class="side_nav" >
+    <div id= "cart" class= "carts" >
+      <%= render @cart %>
+    </div>
     <ul>
       <li><a href= "/" >Home</a></li>
       <li><a href= "/questions" >Ques tions</a></li>
       <li><a href= "/news" >News</a></li>
-      <li><a href= "/contact" >Con tact</a></li>
+      <li><a href= "/contact" >Contact</a></li>
     </ul>
    </nav>
     <main class= '<%= controller.controller_name %>' >

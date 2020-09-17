@@ -7,3 +7,15 @@ one:
 two:
   product: two
   cart: two
+
+tree:
+  product: tree
+  cart: tree
+  price: 20.5
+
+four:
+  product: four
+  cart: tree
+  price: 200
+
+

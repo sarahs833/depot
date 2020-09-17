@@ -19,3 +19,15 @@ ruby:
                 delivered fast, you should add Ruby to your tool box.
   price: 49.5
   image_url: ruby.jpg
+
+tree:
+  title: Test
+  description: test
+  image_url: lorem.jpg
+  price: 20.5
+
+four:
+  title: fourth test
+  description: fourth test
+  image_url: lorem.jpg
+  price: 200
