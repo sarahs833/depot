@@ -17,5 +17,9 @@ class Order < ApplicationRecord
     end
   end
 
+  # def name=(something)
+  #   super(something.upcase)
+  # end
+
 
 end
