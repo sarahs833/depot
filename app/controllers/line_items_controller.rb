@@ -61,6 +61,7 @@ class LineItemsController < ApplicationController
     @line_item.check_quantity
     respond_to do |format|
       format.html { redirect_to store_index_url, notice: 'Line item was successfully destroyed.' }
+      format.js { @current_item = @line_item }
       format.json { head :no_content }
     end
   end
