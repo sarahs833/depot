@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
     if stale?(@latest_order)
       respond_to do |format|
         format.atom
+        format.json { render json: @product}
+        format.xml { render xml: @product.as_json }
       end
     end
   end
