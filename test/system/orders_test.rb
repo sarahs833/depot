@@ -12,6 +12,13 @@ class OrdersTest < ApplicationSystemTestCase
 
   test "creating a Order" do
     visit orders_url
+    page.accept_confirm do
+      click on "Destroy" , match: :first
+    end
+    assert_text "Order was successfully destroyed"
+  end
+
+  test "check routing number" do
     click_on "New Order"
 
     fill_in " pay type", with: @order. pay_type
