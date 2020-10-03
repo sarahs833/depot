@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
   helper_method :set_counter
+  before_action :authorize
+
+protected
+
+  def authorize
+    unless User.find_by(id: session[:user_id])
+      redirect_to login_url, notice: "Please log in"
+    end
+  end
 
 private
   def set_counter
